@@ -164,14 +164,25 @@ fun MatakuliahCard(matakuliah: Matakuliah) {
         Column(
             modifier = Modifier.padding(12.dp)
         ) {
+            // 1. TAMBAHAN BARU: Menampilkan gambar matakuliah di dalam Card (tampilan awal)
+            Image(
+                painter = painterResource(id = matakuliah.imageRes),
+                contentDescription = "Gambar Matakuliah",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(80.dp) // Sesuaikan tinggi gambar pada Card agar proporsional
+                    .padding(bottom = 8.dp),
+                contentScale = ContentScale.Crop
+            )
+
             Text(
-                text = matakuliah.namaMatakuliah,
+                text = matakuliah.namaMatakuliah, // Pastikan Data Class Anda menggunakan 'namaMatakuliah'
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = matakuliah.namaDosen,
+                text = matakuliah.namaDosen, // Pastikan Data Class Anda menggunakan 'namaDosen'
                 fontSize = 12.sp
             )
             Spacer(modifier = Modifier.height(4.dp))
@@ -203,16 +214,27 @@ fun MatakuliahCard(matakuliah: Matakuliah) {
         }
     }
 
-    // ELEMENT UI: AlertDialog akan muncul ketika di klik
+    // 2. TAMBAHAN BARU: Menampilkan gambar di dalam AlertDialog (rincian matakuliah)
     if (showDialog) {
         AlertDialog(
-            onDismissRequest = { showDialog = false }, // Menutup dialog jika user mengeklik di luar area kotak
+            onDismissRequest = {},
             title = {
                 Text(text = "Rincian Matakuliah", fontWeight = FontWeight.Bold)
             },
             text = {
                 // Isi rincian matakuliah
                 Column {
+                    // Gambar Matakuliah dengan ukuran lebih besar di dalam pop-up
+                    Image(
+                        painter = painterResource(id = matakuliah.imageRes),
+                        contentDescription = "Gambar Rincian Matakuliah",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(120.dp)
+                            .padding(bottom = 12.dp),
+                        contentScale = ContentScale.Crop
+                    )
+
                     Text(text = "ID Matakuliah: ${matakuliah.id}")
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(text = "Nama: ${matakuliah.namaMatakuliah}")
@@ -224,7 +246,7 @@ fun MatakuliahCard(matakuliah: Matakuliah) {
             },
             confirmButton = {
                 // Tombol untuk menutup dialog
-                TextButton(onClick = { showDialog = false }) {
+                TextButton(onClick = {}) {
                     Text("Tutup")
                 }
             }
