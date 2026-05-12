@@ -93,7 +93,7 @@ fun MatakuliahApp(viewModel: MatakuliahViewModel) {
                 ) {
                     // Elemen Teks
                     Text(
-                        text = "Semester Ganjil 2024",
+                        text = "Semester Genap 2026",
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.primary, // Warna teks agar kontras dengan pembatasnya
@@ -150,6 +150,7 @@ fun MatakuliahApp(viewModel: MatakuliahViewModel) {
     }
 }
 
+// MatakuliahCard adalah komponen yang menampilkan satu item matakuliah
 @Composable
 fun MatakuliahCard(matakuliah: Matakuliah) {
     // UI STATE: Digunakan untuk mengontrol popup rincian matakuliah
@@ -164,7 +165,7 @@ fun MatakuliahCard(matakuliah: Matakuliah) {
         Column(
             modifier = Modifier.padding(12.dp)
         ) {
-            // 1. TAMBAHAN BARU: Menampilkan gambar matakuliah di dalam Card (tampilan awal)
+            // Menampilkan gambar matakuliah di dalam Card (tampilan awal)
             Image(
                 painter = painterResource(id = matakuliah.imageRes),
                 contentDescription = "Gambar Matakuliah",
